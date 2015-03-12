@@ -4,7 +4,7 @@ use Think\Controller;
 class IndexController extends Controller {
     public function index(){
     	var_dump($_SERVER['PATH_INFO']);
-    	echo "$_SERVER";
+    	print_r($_SERVER);
 		echo "hello world";
     }
     
