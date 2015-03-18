@@ -47,11 +47,11 @@ class IndexController extends Controller {
     	$port = isset($url_array['port'])? $url_array['port'] : 80;
     	
     	$fp = fsockopen($url_array['host'], $port, $errno, $errstr, 30);
-    	if (!$fp) …{
+    	if (!$fp){
     	return FALSE;
     	}
     	$getPath = $url_array['path'] ."?". $url_array['query'];
-    	if(!empty($post_data))…{
+    	if(!empty($post_data)){
     	$method = "POST";
     	}
     	$header = $method . " " . $getPath;
@@ -65,17 +65,17 @@ class IndexController extends Controller {
     	*/
     	
     	$header .= "Connection:Close\r\n";
-    	if(!empty($cookie))…{
+    	if(!empty($cookie)){
     	$_cookie = strval(NULL);
-    	foreach($cookie as $k => $v)…{
+    	foreach($cookie as $k => $v){
     	$_cookie .= $k."=".$v."; ";
     	}
     	$cookie_str =  "Cookie: " . base64_encode($_cookie) ." \r\n";//传递Cookie
     	$header .= $cookie_str;
     	}
-    	if(!empty($post_data))…{
+    	if(!empty($post_data)){
     	$_post = strval(NULL);
-    	foreach($post_data as $k => $v)…{
+    	foreach($post_data as $k => $v){
     	$_post .= $k."=".$v."&";
     	}
     	$post_str  = "Content-Type: application/x-www-form-urlencoded\r\n";//POST数据
